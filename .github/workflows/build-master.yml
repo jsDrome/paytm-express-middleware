@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  release_npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Publish package to npm
+        run: sh ./scripts/release_npm.sh
